@@ -1,0 +1,13 @@
+version: '2'
+services:
+  cassandra:
+    image: cassandra:3.3
+    ports:
+      - "9042:9042"
+  api:
+    image: localhost:5000/api-cassandra:latest
+    ports:
+      - "8080:3000"
+    environment:
+      DB_HOST: cassandra
+      DB_PORT: 9042
